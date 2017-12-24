@@ -1,4 +1,4 @@
-import { prop } from 'ramda';
+import { prop, compose } from 'sanctuary';
 
 export const IS_SEARCHING = 'IS_SEARCHING';
 export function isSearching() {
@@ -39,7 +39,11 @@ export function retrieveCoins()  {
 }
 
 
-export const getCoins = state => prop('coins', state);
+export const getCoins = compose(
+    prop('coins'),
+    prop('Home')
+);
+export const searching = compose(prop('isSearching'), prop('Home'));
 
 function initialState() {
     return {

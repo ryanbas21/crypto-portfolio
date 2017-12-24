@@ -10,9 +10,6 @@ export function* watchRetrieveCoins() {
 
 export function* callRetrieveCoins(action) {
     const coins = yield call(coinMarketCapData)
-    yield coins.fork(
-        compose(put, error),
-        compose(put, addCoins)
-    );
+    yield compose(put, addCoins)(coins)
     yield compose(put, isSearching)();
 }

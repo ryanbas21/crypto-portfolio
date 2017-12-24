@@ -7,5 +7,6 @@ const callFuture = Future.encaseP(get)
 
 export function coinMarketCapData() {
     return callFuture('https://api.coinmarketcap.com/v1/ticker/?limit=10')
-            .map(prop('data'))
+            .promise()
+            .then(prop('data'))
 }

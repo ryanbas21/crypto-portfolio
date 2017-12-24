@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCoins, retrieveCoins, searchCoins, isSearching } from './home.reducer';
-
+import { getCoins, retrieveCoins, searchCoins, isSearching, searching } from './home.reducer';
+import CoinChart from './CoinChart';
 
 class Home extends Component {
     componentDidMount() {
@@ -10,7 +10,13 @@ class Home extends Component {
     render() {
         return (
             <div>
-                Homepage
+                {
+                    !this.props.isSearching
+                    ? <h2>Loading...</h2>
+                    : <CoinChart
+                        coins={ this.props.coins }
+                    />
+                }
             </div>
         );
     }
@@ -18,6 +24,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
         return {
+            isSearching: searching(state),
             coins: getCoins(state) || {}
         };
 }
