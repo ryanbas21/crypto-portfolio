@@ -1,17 +1,20 @@
 import test from 'tape';
-import { getCoins, searching, homeReducer, addCoins, intialState } from './home.reducer';
+import homeReducer, { getCoins, isSearching, searching, addCoins, initialState } from './home.reducer';
 
 const stateFactory = ({
-                coins =  [
-                       {
-                           id: "bitcoin", name: "Bitcoin", symbol: "BTC", rank: "1", price_usd: "13789.7"
-                       },
-                       {
-                           id: "ethereum", name: "Ethereum", symbol: "ETH", rank: "2", price_usd: "710.236"
-                       }
-               ],
-               isSearching = true
-           }) => ({ coins, isSearching });
+        Home = {
+                coins :  [
+                      {
+                          id: "bitcoin", name: "Bitcoin", symbol: "BTC", rank: "1", price_usd: "13789.7"
+                      },
+                      {
+                          id: "ethereum", name: "Ethereum", symbol: "ETH", rank: "2", price_usd: "710.236"
+                      }
+              ],
+              isSearching : true
+              }
+          } = {}) => Home;
+
 test('Home Reducer and Selectors test', nest => {
     nest.test('GetCoins:: Selector', t => {
         const msg = 'Should select the coins from state';
@@ -58,13 +61,13 @@ test('Home Reducer and Selectors test', nest => {
         const msg = 'Should add coins to state';
         const state = stateFactory({ coins : [] });
         const coins = [
-                       {
-                           id: "bitcoin", name: "Bitcoin", symbol: "BTC", rank: "1", price_usd: "13789.7"
-                       },
-                       {
-                           id: "ethereum", name: "Ethereum", symbol: "ETH", rank: "2", price_usd: "710.236"
-                       }
-               ]
+                      {
+                          id: "bitcoin", name: "Bitcoin", symbol: "BTC", rank: "1", price_usd: "13789.7"
+                      },
+                      {
+                          id: "ethereum", name: "Ethereum", symbol: "ETH", rank: "2", price_usd: "710.236"
+                      }
+              ]
         const action = addCoins(coins);
         const actual = homeReducer(state, action);
         const expected = stateFactory();
@@ -73,10 +76,10 @@ test('Home Reducer and Selectors test', nest => {
         t.end();
     });
     nest.test('HomeReducer:: IS_SEARCHING case', t => {
-        const msg = 'Should add coins to state';
-        const state = stateFactory({ coins : [] });
+        const msg = 'Should update is searching';
+        const state = { isSearching: true, coins : [] };
         const action = isSearching();
-        const expected = !state.isSearching;
+        const expected = { isSearching: false, coins: [] };
         const actual = homeReducer(state, action);
 
         t.same(actual, expected, msg);
