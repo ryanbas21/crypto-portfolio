@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Jumbotron } from 'react-bootstrap';
 import { getCoins, retrieveCoins, searchCoins, isSearching, searching } from './home.reducer';
 import CoinChart from './CoinChart';
 
@@ -13,9 +14,11 @@ class Home extends Component {
                 {
                     !this.props.isSearching
                     ? <h2>Loading...</h2>
-                    : <CoinChart
-                        coins={ this.props.coins }
-                    />
+                    : <Jumbotron>
+                        <CoinChart
+                            coins={ this.props.coins }
+                        />
+                    </Jumbotron>
                 }
             </div>
         );
