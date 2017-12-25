@@ -1,6 +1,8 @@
 {
   "parser": "babel-eslint",
-  "extends": "airbnb",
+  "extends": [
+    "prettier"
+    ],
   "env": {
     "browser": true,
     "node": true
@@ -31,6 +33,7 @@
     "no-confusing-arrow": 0,
     "no-implicit-coercion": "error",
     "no-mixed-operators": 0,
+    "no-empty-pattern": 0,
     "no-plusplus": 2,
     "no-use-before-define": ["error", { "functions": true, "classes": true }],
     "no-nested-ternary": 0,
@@ -52,6 +55,7 @@
   },
   "plugins": [
     "compat",
+    "react",
     "import",
     "promise"
   ]

@@ -1,7 +1,10 @@
-# .prettierrc
-printWidth: 100
-parser: flow
-semi: true
-bracketSpacing: true
-tabWidth: 4
 useTabs: true
+printWidth: 100
+tabWidth: 4
+singleQuote: false
+trailingComma: none
+jsxBracketSameLine: false
+parser: babylon
+noSemi: false
+rcVerbose: true
+bracketSpacing: false 
