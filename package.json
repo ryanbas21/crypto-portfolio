@@ -74,6 +74,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "eslint-plugin-compat": "^2.1.0",
     "prettier": "1.9.2",
+    "prettier-eslint": "^8.6.0",
     "redux-devtools-extension": "^2.13.2",
     "tape": "^4.8.0"
   },
