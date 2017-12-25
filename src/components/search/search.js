@@ -45,7 +45,6 @@ class SearchBar extends React.Component {
 }
 
 function mapStateToProps(state) {
-    console.log('state', state)
     return {
         coins: getCoins(state) || {}
     }
