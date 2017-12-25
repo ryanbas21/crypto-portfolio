@@ -1,9 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Search } from '../../components';
 
-export default (props) =>
+
+const Nav = (props) =>
     <Navbar inverse collapseOnSelect>
         <Nav>
             <LinkContainer to='/'>
@@ -21,3 +23,13 @@ export default (props) =>
                 <Search onEnter={() => {}}/>
             </Navbar.Form>
     </Navbar>
+
+
+function mapStateToProps(state) {
+    return {
+    };
+}
+const mapDispatchToProps =  {
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav)
