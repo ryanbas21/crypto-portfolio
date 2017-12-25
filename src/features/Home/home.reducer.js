@@ -1,4 +1,4 @@
-import { prop, compose, concat } from 'sanctuary';
+import { prop, compose, concat, not } from 'sanctuary';
 
 export const IS_SEARCHING = 'IS_SEARCHING';
 export function isSearching() {
@@ -25,7 +25,6 @@ export function error(error) {
 }
 export const ADD_COINS = 'ADD_COINS';
 export function addCoins(coins = []) {
-    console.log(coins)
         return {
             type: ADD_COINS,
             payload: coins
@@ -39,11 +38,8 @@ export function retrieveCoins()  {
 }
 
 
-export const getCoins = compose(
-    prop('coins'),
-    prop('Home')
-);
-export const searching = compose(prop('isSearching'), prop('Home'));
+export const getCoins = prop('coins')
+export const searching = prop('isSearching');
 
 export function initialState() {
     return {
@@ -51,7 +47,7 @@ export function initialState() {
         coins: []
     };
 }
-export default function(state = initialState(), action) {
+export default function(state = initialState(), action = {} = { type: ''}) {
     switch(action.type) {
         case ADD_COINS: {
             return {
@@ -62,7 +58,7 @@ export default function(state = initialState(), action) {
         case IS_SEARCHING: {
             return {
                 ...state,
-                isSearching: !state.isSearching,
+                isSearching: not(state.isSearching),
             };
         }
         case SEARCH: {

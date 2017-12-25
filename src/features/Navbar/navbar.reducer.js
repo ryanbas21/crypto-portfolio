@@ -1,4 +1,4 @@
-import { prop, map, filter, toLower } from 'sanctuary';
+import { prop, map, filter, toLower, compose } from 'sanctuary';
 
 const SEARCH = 'SEARCH';
 export function search(searchCriteria) {
@@ -9,9 +9,8 @@ export function search(searchCriteria) {
 }
 
 
-export const selectCoins(state) {
-    return map(prop('name'), state);
-}
+export const selectCoins = compose(map(prop('name')), prop('coins'));
+
 function initialState() {
     return [];
 }
