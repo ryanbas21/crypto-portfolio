@@ -73,6 +73,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "prettier": "1.9.2",
+    "prettier-eslint": "^8.6.0",
     "redux-devtools-extension": "^2.13.2",
     "tape": "^4.8.0"
   },

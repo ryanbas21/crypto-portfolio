@@ -1,7 +1,3 @@
-import React from 'react';
+import React from "react";
 
-export default (props) => (
-    <div>
-        Portfolio
-    </div>
-);
+export default props => <div>Portfolio</div>;
