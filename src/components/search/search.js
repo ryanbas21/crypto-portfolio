@@ -19,7 +19,7 @@ class SearchBar extends React.Component {
         this.setState(() => ({
             coins: filter(val => val.name.includes(value),
             this.state.coins.length ? this.state.coins : this.props.coins)
-        });
+        })
         );
     }
     render() {
