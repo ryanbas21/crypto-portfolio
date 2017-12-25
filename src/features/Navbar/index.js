@@ -5,23 +5,23 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Search } from "../../components";
 
 const Nav = props => (
-	<Navbar inverse collapseOnSelect>
-		<Nav>
-			<LinkContainer to="/">
-				<NavItem>Home</NavItem>
-			</LinkContainer>
-			<LinkContainer to="/portfolio">
-				<NavItem>Portfolio</NavItem>
-			</LinkContainer>
-		</Nav>
-		<Navbar.Form pullRight>
-			<Search onEnter={() => {}} />
-		</Navbar.Form>
-	</Navbar>
+  <Navbar inverse collapseOnSelect>
+    <Nav>
+      <LinkContainer to="/">
+        <NavItem>Home</NavItem>
+      </LinkContainer>
+      <LinkContainer to="/portfolio">
+        <NavItem>Portfolio</NavItem>
+      </LinkContainer>
+    </Nav>
+    <Navbar.Form pullRight>
+      <Search onEnter={() => {}} />
+    </Navbar.Form>
+  </Navbar>
 );
 
 function mapStateToProps(state) {
-	return {};
+  return {};
 }
 const mapDispatchToProps = {};
 

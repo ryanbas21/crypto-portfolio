@@ -5,13 +5,13 @@ import { Home, Portfolio, Navbar } from "./features/";
 import { history } from "./store";
 
 export default () => (
-	<ConnectedRouter history={history}>
-		<Router>
-			<div>
-				<Navbar />
-				<Route exact path="/" component={Home} />
-				<Route path="/portfolio" component={Portfolio} />
-			</div>
-		</Router>
-	</ConnectedRouter>
+  <ConnectedRouter history={history}>
+    <Router>
+      <div>
+        <Navbar />
+        <Route exact path="/" component={Home} />
+        <Route path="/portfolio" component={Portfolio} />
+      </div>
+    </Router>
+  </ConnectedRouter>
 );
