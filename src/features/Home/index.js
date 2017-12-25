@@ -7,6 +7,7 @@ import CoinChart from './CoinChart';
 class Home extends Component {
     componentDidMount() {
         this.props.retrieveCoins();
+        
     }
     render() {
         return (
