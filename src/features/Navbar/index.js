@@ -1,28 +1,28 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Navbar, Nav, NavItem } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import { Search } from "../../components";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Search } from '../../components';
 
-const Nav = props => (
-  <Navbar inverse collapseOnSelect>
-    <Nav>
-      <LinkContainer to="/">
-        <NavItem>Home</NavItem>
-      </LinkContainer>
-      <LinkContainer to="/portfolio">
-        <NavItem>Portfolio</NavItem>
-      </LinkContainer>
-    </Nav>
-    <Navbar.Form pullRight>
-      <Search onEnter={() => {}} />
-    </Navbar.Form>
-  </Navbar>
+const Navigation = props => (
+	<Navbar inverse collapseOnSelect>
+		<Nav>
+			<LinkContainer to="/">
+				<NavItem>Home</NavItem>
+			</LinkContainer>
+			<LinkContainer to="/portfolio">
+				<NavItem>Portfolio</NavItem>
+			</LinkContainer>
+		</Nav>
+		<Navbar.Form pullRight>
+			<Search onEnter={() => {}} />
+		</Navbar.Form>
+	</Navbar>
 );
 
 function mapStateToProps(state) {
-  return {};
+	return {};
 }
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
