@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { FormControl, FormGroup, Button } from 'react-bootstrap';
-import { getCoins } from '../../features/Home/home.reducer';
-import { filter, toUpper } from 'sanctuary';
+import {connect} from 'react-redux';
+import {FormControl, FormGroup, Button} from 'react-bootstrap';
+import {getCoins} from '../../features/Home/home.reducer';
+import {filter, toUpper} from 'sanctuary';
 
 class SearchBar extends React.Component {
 	constructor(props) {

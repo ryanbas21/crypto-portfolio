@@ -1,10 +1,9 @@
 useTabs: true
 printWidth: 100
 tabWidth: 4
-singleQuote: false
+singleQuote: true 
 trailingComma: none
-jsxBracketSameLine: false
 parser: babylon
 noSemi: false
 rcVerbose: true
-bracketSpacing: false 
+bracketSpacing: false

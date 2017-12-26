@@ -3,10 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"lint-staged": {
-		"*.{js,json,css,md}": [
-			"prettier --write",
-			"git add"
-		]
+		"*.{js,json,css,md}": ["prettier --write", "git add"]
 	},
 	"dependencies": {
 		"autoprefixer": "7.1.6",
@@ -62,11 +59,12 @@
 	"scripts": {
 		"start": "node scripts/start.js",
 		"build": "node scripts/build.js",
-		"test": "nyc tape -r babel-register src/**/*.test.js",
-		"lint": "eslint -c ./.eslintrc src/**/*.js",
+		"test": "watch 'nyc ava src/**/*.test.js; npm run lint; echo lint finished...' ./src",
+		"lint": "eslint -c .eslintrc src/**/*.js",
 		"babel": "./node_modules/.bin/babel  ./src --experimental --source-maps-inline -d ./dist"
 	},
 	"devDependencies": {
+		"ava": "^0.24.0",
 		"babel-cli": "^6.26.0",
 		"babel-loader": "^7.1.2",
 		"babel-plugin-istanbul": "^4.1.5",
@@ -83,42 +81,24 @@
 		"prettier": "1.9.2",
 		"prettier-eslint": "^8.6.0",
 		"redux-devtools-extension": "^2.13.2",
-		"tape": "^4.8.0"
+		"tape": "^4.8.0",
+		"watch": "^1.0.2"
 	},
-	"setupFiles": [
-		"<rootDir>/config/polyfills.js"
-	],
+	"setupFiles": ["<rootDir>/config/polyfills.js"],
 	"transform": {
 		"^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
 		"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
 		"^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
 	},
-	"transformIgnorePatterns": [
-		"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
-	],
+	"transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"],
 	"moduleNameMapper": {
 		"^react-native$": "react-native-web"
 	},
-	"moduleFileExtensions": [
-		"web.js",
-		"mjs",
-		"js",
-		"json",
-		"web.jsx",
-		"jsx",
-		"node"
-	],
+	"moduleFileExtensions": ["web.js", "mjs", "js", "json", "web.jsx", "jsx", "node"],
 	"nyc": {
-		"include": [
-			"src/**/*.test.js"
-		],
-		"extension": [
-			".js",
-			".jsx"
-		],
-		"require": [
-			"babel-register"
-		],
+		"include": ["src/**/*.test.js"],
+		"extension": [".js", ".jsx"],
+		"require": ["babel-register"],
 		"sourceMap": false,
 		"instrument": false
 	},
@@ -126,3 +106,4 @@
 		"extends": "react-app"
 	}
 }
+
