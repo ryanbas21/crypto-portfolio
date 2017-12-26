@@ -25,7 +25,7 @@ const stateFactory = ({
 		}
 	],
 	isSearching = true
-} = {}) => ({ coins, isSearching });
+} = {}) => ({coins, isSearching});
 
 test('Home Reducer and Selectors test', nest => {
 	nest.test('GetCoins:: Selector', t => {
@@ -71,7 +71,7 @@ test('Home Reducer and Selectors test', nest => {
 	});
 	nest.test('HomeReducer:: ADD_COINS case', t => {
 		const msg = 'Should add coins to state';
-		const state = stateFactory({ coins: [] });
+		const state = stateFactory({coins: []});
 		const coins = [
 			{
 				id: 'bitcoin',
@@ -97,9 +97,9 @@ test('Home Reducer and Selectors test', nest => {
 	});
 	nest.test('HomeReducer:: IS_SEARCHING case', t => {
 		const msg = 'Should update is searching';
-		const state = { isSearching: true, coins: [] };
+		const state = {isSearching: true, coins: []};
 		const action = isSearching();
-		const expected = { isSearching: false, coins: [] };
+		const expected = {isSearching: false, coins: []};
 		const actual = homeReducer(state, action);
 
 		t.same(actual, expected, msg);
