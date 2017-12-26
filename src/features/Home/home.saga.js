@@ -5,9 +5,11 @@ import coinMarketCapData from './api';
 
 export function* callRetrieveCoins() {
 	const coins = yield call(coinMarketCapData);
+	console.log(coins);
 	yield compose(put, addCoins)(coins);
 	yield compose(put, isSearching)();
 }
+
 export function* watchRetrieveCoins() {
 	yield compose(put, isSearching)();
 	yield takeEvery(RETRIEVE_COINS, callRetrieveCoins);

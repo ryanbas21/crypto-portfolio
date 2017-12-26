@@ -1,8 +1,8 @@
 import axios from 'axios';
 import Future from 'fluture';
-import { prop } from 'sanctuary';
+import {prop} from 'sanctuary';
 
-const { get } = axios;
+const {get} = axios;
 const callFuture = Future.encaseP(get);
 
 export default function coinMarketCapData() {
