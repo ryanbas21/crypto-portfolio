@@ -1,8 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
-import { Search } from '../../components';
+import {connect} from 'react-redux';
+import {Navbar, Nav, NavItem} from 'react-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap';
+import {Search} from '../../components';
 
 const Navigation = props => (
 	<Navbar inverse collapseOnSelect>

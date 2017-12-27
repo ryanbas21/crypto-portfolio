@@ -1,9 +1,12 @@
 {
-  "plugins": ["transform-runtime"],
-  "presets": ["es2015", "es2016", "stage-2", "stage-0", "react", "env"],
-  "env": {
-      "test": {
-          "plugins": ["istanbul"]
-      }
-  }
+	"plugins": ["transform-runtime"],
+	"presets": ["es2015", "es2016", "stage-2", "stage-0", "react", "env"],
+	"ignore": "src/**/*.test.js",
+	"env": {
+		"test": {
+			"plugins": ["istanbul"],
+			"sourceMaps": "inline"
+		}
+	}
 }
+

@@ -1,0 +1,18 @@
+{
+  "all": true,
+  "reporter": [
+    "lcov",
+    "text",
+    "html"
+  ],
+  "extension": [
+    ".js",
+    ".jsx"
+  ],
+  "include": [
+    "src/**/*.test.js"
+  ],
+  "require": [
+    "babel-register"
+  ]
+}
