@@ -1,11 +1,10 @@
-import { compose } from 'sanctuary';
-import { put, call, takeEvery } from 'redux-saga/effects';
-import { RETRIEVE_COINS, isSearching, error, addCoins } from './home.reducer';
+import {compose} from 'sanctuary';
+import {put, call, takeEvery} from 'redux-saga/effects';
+import {RETRIEVE_COINS, isSearching, error, addCoins} from './home.reducer';
 import coinMarketCapData from './api';
 
 export function* callRetrieveCoins() {
 	const coins = yield call(coinMarketCapData);
-	console.log(coins);
 	yield compose(put, addCoins)(coins);
 	yield compose(put, isSearching)();
 }
