@@ -3,10 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"lint-staged": {
-		"*.{js,json,css,md}": [
-			"prettier --write",
-			"git add"
-		]
+		"*.{js,json,css,md}": ["prettier --write", "git add"]
 	},
 	"dependencies": {
 		"autoprefixer": "7.1.6",
@@ -62,8 +59,8 @@
 	"scripts": {
 		"start": "node scripts/start.js",
 		"build": "node scripts/build.js",
-		"test": "ava --tap | tap-nyan",
-		"watch": "ava --watch \"src/**/*.js\"",
+		"test": "ava --verbose",
+		"watch": "cross-env NODE_ENV=test ava  --watch ",
 		"report": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text npm test",
 		"lint": "eslint .",
 		"babel": "./node_modules/.bin/babel  ./src --experimental --source-maps-inline -d ./dist"
@@ -91,32 +88,19 @@
 		"redux-devtools-extension": "^2.13.2",
 		"tap-nyan": "^1.1.0"
 	},
-	"setupFiles": [
-		"<rootDir>/config/polyfills.js"
-	],
+	"setupFiles": ["<rootDir>/config/polyfills.js"],
 	"transform": {
 		"^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
 		"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
 		"^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
 	},
-	"transformIgnorePatterns": [
-		"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
-	],
+	"transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"],
 	"moduleNameMapper": {
 		"^react-native$": "react-native-web"
 	},
-	"moduleFileExtensions": [
-		"web.js",
-		"mjs",
-		"js",
-		"json",
-		"web.jsx",
-		"jsx",
-		"node"
-	],
+	"moduleFileExtensions": ["web.js", "mjs", "js", "json", "web.jsx", "jsx", "node"],
 	"ava": {
-		"require": [
-			"babel-core/register"
-		]
+		"require": ["babel-core/register"]
 	}
 }
+
