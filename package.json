@@ -3,7 +3,10 @@
 	"version": "0.1.0",
 	"private": true,
 	"lint-staged": {
-		"*.{js,json,css,md}": ["prettier --write", "git add"]
+		"*.{js,json,css,md}": [
+			"prettier --write",
+			"git add"
+		]
 	},
 	"dependencies": {
 		"autoprefixer": "7.1.6",
@@ -86,21 +89,35 @@
 		"prettier": "1.9.2",
 		"prettier-eslint": "^8.6.0",
 		"redux-devtools-extension": "^2.13.2",
+		"redux-logger": "^3.0.6",
 		"tap-nyan": "^1.1.0"
 	},
-	"setupFiles": ["<rootDir>/config/polyfills.js"],
+	"setupFiles": [
+		"<rootDir>/config/polyfills.js"
+	],
 	"transform": {
 		"^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
 		"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
 		"^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
 	},
-	"transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"],
+	"transformIgnorePatterns": [
+		"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+	],
 	"moduleNameMapper": {
 		"^react-native$": "react-native-web"
 	},
-	"moduleFileExtensions": ["web.js", "mjs", "js", "json", "web.jsx", "jsx", "node"],
+	"moduleFileExtensions": [
+		"web.js",
+		"mjs",
+		"js",
+		"json",
+		"web.jsx",
+		"jsx",
+		"node"
+	],
 	"ava": {
-		"require": ["babel-core/register"]
+		"require": [
+			"babel-core/register"
+		]
 	}
 }
-
