@@ -1,7 +1,7 @@
 useTabs: true
 printWidth: 100
 tabWidth: 4
-singleQuote: true 
+singleQuote: true
 trailingComma: none
 parser: babylon
 noSemi: false

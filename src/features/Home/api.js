@@ -1,12 +1,8 @@
 import axios from 'axios';
-import Future from 'fluture';
 import {prop} from 'sanctuary';
 
 const {get} = axios;
-const callFuture = Future.encaseP(get);
 
 export default function coinMarketCapData() {
-	return callFuture('https://api.coinmarketcap.com/v1/ticker/?limit=10')
-		.promise()
-		.then(prop('data'));
+	return get('https://api.coinmarketcap.com/v1/ticker/?limit=10').then(prop('data'));
 }

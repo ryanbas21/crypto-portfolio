@@ -1,4 +1,4 @@
-import { prop, compose, concat, not } from 'sanctuary';
+import {prop, compose, concat, not} from 'sanctuary';
 
 export const IS_SEARCHING = 'IS_SEARCHING';
 export function isSearching() {
@@ -46,12 +46,12 @@ export function initialState() {
 		coins: []
 	};
 }
-export default function(state = initialState(), action = ({} = { type: '' })) {
+export default function(state = initialState(), action = ({} = {type: ''})) {
 	switch (action.type) {
 		case ADD_COINS: {
 			return {
 				...state,
-				coins: concat(action.payload, state.coins)
+				coins: action.payload
 			};
 		}
 		case IS_SEARCHING: {
