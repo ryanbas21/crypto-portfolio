@@ -98,23 +98,23 @@ test('portfolioReducer:: getTotal', t => {
 			id: 'bitcoin',
 			name: 'Bitcoin',
 			symbol: 'BTC',
-			rank: '1',
-			price_usd: 10,
-			total: 2
+			rank: '2',
+			price_usd: 11,
+			total: 3
 		},
 		{
 			id: 'bitcoin',
 			name: 'Bitcoin',
 			symbol: 'BTC',
-			rank: '1',
-			price_usd: 10,
-			total: -2
+			rank: '2',
+			price_usd: 11,
+			total: -1
 		}
 	];
 	const expected2 = {
 		bitcoin: {
-			total: 0,
-			value: 0
+			total: 2,
+			value: 22
 		}
 	};
 	const actual2 = getTotal(newState);

@@ -1,20 +1,11 @@
 import React, {Fragment} from 'react';
+import {map} from 'sanctuary';
 
-function Head(props) {
-	return (
-		<Fragment>
-			<thead>
-				<tr>
-					<th>Rank</th>
-					<th>Name</th>
-					<th>symbol</th>
-					<th>Price [USD]</th>
-					<th>24hr Volume [USD] </th>
-					<th>24hr Change</th>
-				</tr>
-			</thead>
-		</Fragment>
-	);
-}
+const headTitles = ['Rank', 'Name', 'Symbol', 'Price [USD]', '24hr Volume [USD]', '24hr Change'];
+const Head = props => (
+	<thead>
+		<tr>{map(title => <th>{title}</th>, headTitles)}</tr>
+	</thead>
+);
 
 export default Head;
