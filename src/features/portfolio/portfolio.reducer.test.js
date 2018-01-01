@@ -8,7 +8,8 @@ const stateFactory = (
 			name: 'Ethereum',
 			symbol: 'ETH',
 			rank: '2',
-			price_usd: '710.236'
+			price_usd: 710.236,
+			total: 1
 		}
 	]
 ) => coins;
@@ -43,8 +44,8 @@ test('portfolioReducer:: returns default state', t => {
 
 	t.deepEqual(actual, expected);
 });
-test.skip('portfolioReducer:: getTotal', t => {
-	t.plan(2);
+test('portfolioReducer:: getTotal', t => {
+	t.plan(3);
 	const state = [
 		{
 			id: 'ethereum',
@@ -92,7 +93,7 @@ test.skip('portfolioReducer:: getTotal', t => {
 	};
 
 	t.deepEqual(actual, expected);
-	const newState = state.concat([
+	const newState = [
 		{
 			id: 'bitcoin',
 			name: 'Bitcoin',
@@ -109,10 +110,50 @@ test.skip('portfolioReducer:: getTotal', t => {
 			price_usd: 10,
 			total: -2
 		}
-	]);
-
+	];
+	const expected2 = {
+		bitcoin: {
+			total: 0,
+			value: 0
+		}
+	};
 	const actual2 = getTotal(newState);
-	t.deepEqual(actual2, expected);
+	t.deepEqual(actual2, expected2);
+
+	const newState1 = stateFactory([
+		{
+			id: 'ethereum',
+			name: 'Ethereum',
+			symbol: 'ETH',
+			rank: '2',
+			price_usd: 1,
+			total: 1
+		},
+		{
+			id: 'ethereum',
+			name: 'Ethereum',
+			symbol: 'ETH',
+			rank: '2',
+			price_usd: 1,
+			total: 1
+		},
+		{
+			id: 'ethereum',
+			name: 'Ethereum',
+			symbol: 'ETH',
+			rank: '2',
+			price_usd: 1,
+			total: -2
+		}
+	]);
+	const actual3 = getTotal(newState1);
+	const expected3 = {
+		ethereum: {
+			total: 0,
+			value: 0
+		}
+	};
+	t.deepEqual(actual3, expected3);
 });
 test('portfolioReducer:: sellCoin', t => {
 	const state = [

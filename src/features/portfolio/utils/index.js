@@ -11,15 +11,14 @@ export function getTotalCallback(acc, coin) {
 		return acc;
 	}
 
-	const sumOfValue = add(grabValue(coin), prop('value')(acc[coin.id]));
-	const sumTotal = add(grabTotal(coin), grabTotal(acc[coin.id]));
+	const total = add(grabTotal(coin), grabTotal(acc[coin.id]));
+	const value = total > 0 ? add(grabValue(coin), prop('value')(acc[coin.id])) : 0;
 
 	return {
 		...acc,
 		[coin.id]: {
-			value: sumOfValue,
-			total: sumTotal
+			value,
+			total
 		}
 	};
 }
-
