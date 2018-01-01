@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-//eslint: ignor
->>>>>>> ref(ref-react-16): Refactor the homepage table to use React 16 fragments
 import React, {Fragment} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {ConnectedRouter} from 'react-router-redux';
