@@ -1,4 +1,4 @@
-import {concat, prop} from 'sanctuary';
+import {concat, negate, prop} from 'sanctuary';
 import {getTotalCallback} from './utils';
 
 export const ADD_COIN = 'ADD_COIN';
@@ -32,7 +32,7 @@ export default function(state = [], action = ({} = {type: ''})) {
 			return concat(state, [action.payload]);
 		}
 		case SELL_COIN: {
-			return concat(state, [{...action.payload, total: -action.payload.total}]);
+			return concat(state, [{...action.payload, total: negate(action.payload.total)}]);
 		}
 		default: {
 			return state;
