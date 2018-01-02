@@ -46,24 +46,34 @@ export function initialState() {
 		coins: []
 	};
 }
+
+function computeSearch(state, action) {
+	return {
+		...state
+	};
+}
+function computeIsSearching(state, action) {
+	return {
+		...state,
+		isSearching: not(state.isSearching)
+	};
+}
+function computeAddCoins(state, action) {
+	return {
+		...state,
+		coins: action.payload
+	};
+}
 export default function(state = initialState(), action = ({} = {type: ''})) {
 	switch (action.type) {
 		case ADD_COINS: {
-			return {
-				...state,
-				coins: action.payload
-			};
+			return computeAddCoins(state, action);
 		}
 		case IS_SEARCHING: {
-			return {
-				...state,
-				isSearching: not(state.isSearching)
-			};
+			return computeIsSearching(state, action);
 		}
 		case SEARCH: {
-			return {
-				...state
-			};
+			return computeSearch(state, action);
 		}
 		default: {
 			return state;
