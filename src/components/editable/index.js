@@ -48,11 +48,16 @@ class Editable extends Component {
 	render() {
 		const {editValue, valueChanged} = this.state;
 		const {children} = this.props;
+<<<<<<< ea34bbdd4f2ae2bafb73278cd7e63e71cebaa51d
 		const {value = 'Enter Notes'} = {
+=======
+		const {value = ''} = {
+>>>>>>> Editable (#29)
 			value: valueChanged ? this.state.value : this.props.value
 		};
 
 		return (
+<<<<<<< ea34bbdd4f2ae2bafb73278cd7e63e71cebaa51d
 			<div onBlur={this.saveValue}>
 				<FormGroup
 					controlId="FormControlsTextarea"
@@ -64,13 +69,30 @@ class Editable extends Component {
 					{editValue ? (
 						<FormControl
 							componentClass="textarea"
+=======
+			<div onBlur={this.saveValue} style={{width: '300px', height: '200px'}}>
+				<FormGroup controlId="FormControlsTextarea">
+					{editValue ? (
+						<FormControl
+							componentClass="textarea"
+							autoFocus
+							onChange={this.setValue}
+							onKeyUp={this.handleKeyUp}
+							onFocus={this.handleFocus}
+>>>>>>> Editable (#29)
 							placeholder={'Enter Notes'}
 							value={value ? value : ''}
 						/>
 					) : typeof children === 'function' ? (
 						children({value, onClick: this.editValue})
 					) : (
+<<<<<<< ea34bbdd4f2ae2bafb73278cd7e63e71cebaa51d
 						<h1 onClick={this.editValue}>{value ? value : 'Enter some notes'}</h1>
+=======
+						<h1 onClick={this.editValue}>
+							{value ? value : 'Click Here to add notes'}
+						</h1>
+>>>>>>> Editable (#29)
 					)}
 				</FormGroup>
 			</div>
