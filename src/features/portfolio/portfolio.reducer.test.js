@@ -1,5 +1,5 @@
 import test from 'ava';
-import portfolioReducer, {sellCoin, addCoin, getTotal} from './portfolio.reducer';
+import portfolioReducer, { sellCoin, addCoin, getTotal } from './portfolio.reducer';
 
 const stateFactory = (
 	coins = [

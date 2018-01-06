@@ -1,5 +1,5 @@
 import React from 'react';
-import {Editable} from '../../components';
+import { Editable } from '../../components';
 
 export default props => (
 	<div>

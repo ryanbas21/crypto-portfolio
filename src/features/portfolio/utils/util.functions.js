@@ -1,4 +1,4 @@
-import {prop, add} from 'sanctuary';
+import { prop, add } from 'sanctuary';
 
 export const grabTotal = prop('total');
 export const grabValue = prop('price_usd');
