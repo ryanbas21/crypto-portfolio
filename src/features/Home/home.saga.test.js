@@ -1,8 +1,8 @@
 import test from 'ava';
-import {callRetrieveCoins} from './home.saga';
-import {addCoins} from './home.reducer';
-import {call, put} from 'redux-saga/effects';
-import {isSearching} from './home.reducer';
+import { callRetrieveCoins } from './home.saga';
+import { addCoins } from './home.reducer';
+import { call, put } from 'redux-saga/effects';
+import { isSearching } from './home.reducer';
 import coinMarketCapData from './api';
 
 test('callRetrieveCoins:: Test api call', t => {

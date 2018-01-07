@@ -1,5 +1,6 @@
 import React from 'react';
 import {Editable, AddCoin} from '../../components';
+
 export default props => (
 	<div>
 		Portfolio

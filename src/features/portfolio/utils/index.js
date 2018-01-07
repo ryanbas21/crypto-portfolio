@@ -1,4 +1,4 @@
-import {grabTotal, grabValue, value, total} from './util.functions';
+import { grabTotal, grabValue, value, total } from './util.functions';
 
 export const getTotalCallback = (acc, coin) => {
 	if (!acc[coin.id]) {

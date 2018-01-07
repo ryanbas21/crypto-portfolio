@@ -25,7 +25,7 @@ const stateFactory = ({
 		}
 	],
 	isSearching = true
-} = {}) => ({coins, isSearching});
+} = {}) => ({ coins, isSearching });
 
 test('GetCoins:: Selector', t => {
 	const msg = 'Should select the coins from state';
@@ -66,7 +66,7 @@ test('HomeReducer:: default case', t => {
 });
 test('HomeReducer:: ADD_COINS case', t => {
 	const msg = 'Should add coins to state';
-	const state = stateFactory({coins: []});
+	const state = stateFactory({ coins: [] });
 	const coins = [
 		{
 			id: 'bitcoin',
@@ -91,9 +91,9 @@ test('HomeReducer:: ADD_COINS case', t => {
 });
 test('HomeReducer:: IS_SEARCHING case', t => {
 	const msg = 'Should update is searching';
-	const state = {isSearching: true, coins: []};
+	const state = { isSearching: true, coins: [] };
 	const action = isSearching();
-	const expected = {isSearching: false, coins: []};
+	const expected = { isSearching: false, coins: [] };
 	const actual = homeReducer(state, action);
 
 	t.deepEqual(actual, expected, msg);
