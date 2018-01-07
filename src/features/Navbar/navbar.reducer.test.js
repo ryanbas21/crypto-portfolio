@@ -1,5 +1,5 @@
 import test from 'ava';
-import navbarReducer, {search, selectCoins} from './navbar.reducer';
+import navbarReducer, { search, selectCoins } from './navbar.reducer';
 
 const stateFactory = ({
 	Home = {

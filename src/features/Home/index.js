@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {Jumbotron} from 'react-bootstrap';
-import {getCoins, retrieveCoins, searchCoins, isSearching, searching} from './home.reducer';
+import { connect } from 'react-redux';
+import { Jumbotron } from 'react-bootstrap';
+import { getCoins, retrieveCoins, searchCoins, isSearching, searching } from './home.reducer';
 import CoinChart from './table/CoinChart';
 
 class Home extends Component {
