@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"lint-staged": {
-		"*.{js, jsx,json,css,md}": ["prettier --write", "git add"]
+		"*.{js, jsx,css,md}": ["prettier --write", "git add"]
 	},
 	"dependencies": {
 		"autoprefixer": "7.1.6",
