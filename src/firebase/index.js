@@ -7,7 +7,7 @@ function configureFirebase() {
 		console.log('initialized');
 	} catch (err) {
 		if (!/already exists/.test(err.message)) {
-			console.log(`Firebase initialization error => ${err}`);
+			                 console.log(`Firebase initialization error => ${err}`);
 		}
 	}
 }

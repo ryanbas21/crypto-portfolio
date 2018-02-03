@@ -1,17 +1,9 @@
-<<<<<<< ea34bbdd4f2ae2bafb73278cd7e63e71cebaa51d
-import React from 'react';
-import { connect } from 'react-redux';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
-import { Search } from '../../components';
-=======
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Navbar, Nav} from 'react-bootstrap';
 import {map} from 'sanctuary';
 import {Search} from '../../components';
 import NavbarItem from './navbaritem';
->>>>>>> Editable (#29)
 
 class Navigation extends Component {
 	constructor() {
