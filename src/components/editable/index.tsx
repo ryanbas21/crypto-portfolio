@@ -1,10 +1,19 @@
-import React, {Component, Fragment} from 'react';
-import PropTypes from 'prop-types';
-import {FormGroup, ControlLabel, FormControl} from 'react-bootstrap';
+import * as React from 'react';
+import {FormGroup, FormControl} from 'react-bootstrap';
 
 const noop = () => {};
+interface IEditableProps  {
+	value: string,
+	onSave: (n: string) => any;
+	children: () => any;
+};
 
-class Editable extends Component {
+interface IEditableState {
+	editValue: boolean;
+	valueChanged: boolean;
+	value: string;
+}
+class Editable extends React.Component<any, IEditableState> {
 	constructor({onSave = noop}) {
 		super();
 		this.onSave = onSave;
@@ -78,11 +87,5 @@ class Editable extends Component {
 	}
 }
 
-const {string, func} = PropTypes;
-Editable.propTypes = {
-	value: string,
-	onSave: func,
-	children: func
-};
 
 export default Editable;

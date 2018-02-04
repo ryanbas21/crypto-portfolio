@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {storiesOf} from '@storybook/react';
-import {Editable} from '../src/components';
+import {Editable} from '../src/components/index';
 
 storiesOf('Editable', module)
 	.add('Editable Component', () => <Editable />)

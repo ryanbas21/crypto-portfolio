@@ -2,9 +2,9 @@ import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 import { Home, Portfolio, Navigation } from './features';
-import { history } from './store';
+import { history } from './store/index';
 
-export default () => (
+const Routes: React.SFC<{}> = () => (
 	<ConnectedRouter history={history}>
 		<Router>
 			<Fragment>
@@ -15,3 +15,5 @@ export default () => (
 		</Router>
 	</ConnectedRouter>
 );
+
+export default Routes;
