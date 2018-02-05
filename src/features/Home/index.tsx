@@ -8,11 +8,15 @@ import { RootState } from '../../reducers/';
 import { ICoin } from '../portfolio/portfolio.reducer';
 
 interface IHomeState {}
+
 class Home extends Component<IHomeProps, IHomeState> {
-	componentDidMount() {
+  constructor(props: IHomeProps) {
+        super(props);
+  }
+	componentDidMount(): void {
 		this.props.retrieveCoins();
 	}
-	render() {
+	render(): JSX.Element {
 		return (
 			<div>
 				{!this.props.isSearching ? (
@@ -41,7 +45,6 @@ const mapDispatchToProps = {
 
 interface IHomeProps {
 	retrieveCoins: () => RETRIEVE_COINS; 
-	// searchCoins: PropTypes.func.isRequired,
 	isSearching: () => IS_SEARCHING; 
 	coins: ICoin[]; 
 };

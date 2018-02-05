@@ -98,7 +98,7 @@ function computeAddCoins(state: IInitialState, action: IRootAction): IHomeState 
 	};
 }
 
-interface IHomeState {
+export interface IHomeState {
 	isSearching: boolean;
 	coins: ICoin[];
 }

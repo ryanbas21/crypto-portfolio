@@ -1,7 +1,9 @@
 import { prop, map, filter, toLower, compose } from 'sanctuary';
+import { IRootAction } from '../../store/root-action';
 
-const SEARCH = 'SEARCH';
-export function search(searchCriteria) {
+export type SEARCH_TYPE = 'SEARCH';
+const SEARCH: SEARCH_TYPE = 'SEARCH';
+export function search(searchCriteria: string): IRootAction {
 	return {
 		type: SEARCH,
 		payload: searchCriteria
@@ -10,13 +12,13 @@ export function search(searchCriteria) {
 
 export const selectCoins = compose(map(prop('name')), prop('coins'));
 
-function initialState() {
+function initialState(): [] {
 	return [];
 }
-export default function(state = initialState(), action) {
+export default function(state = initialState(), action: IRootAction): string[]  {
 	switch (action.type) {
 		case SEARCH: {
-			return filter(coin => toLower(coin).includes(toLower(action.payload)), state);
+			  return filter((coin: string) => toLower(coin).includes(toLower(action.payload)), state);
 		}
 		default: {
 			return state;
