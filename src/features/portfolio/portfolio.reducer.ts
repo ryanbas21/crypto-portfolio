@@ -1,12 +1,13 @@
 import { concat, negate } from 'sanctuary';
 import { getTotalCallback } from './utils';
+import { IAccumulatedCoin } from './utils/index';
+import { IRootAction } from '../../store/root-action';
 
 // action types
-export type ADD_COIN = 'ADD_COIN';
-export type SELL_COIN = 'SELL_COIN';
+type ADD_COIN = 'ADD_COIN';
+type SELL_COIN = 'SELL_COIN';
 
-export const PORTFOLIO_TYPES = ADD_COIN | SELL_COIN;
-interface ICoin {
+export interface ICoin {
 	id: string;
 	name: string;
 	symbol: string;
@@ -15,7 +16,7 @@ interface ICoin {
 	total: number;
 }
 export const ADD_COIN: ADD_COIN = 'ADD_COIN';
-export function addCoin(coin: ICoin, total) {
+export function addCoin(coin: ICoin, total: number) {
 	return {
 		type: ADD_COIN,
 		payload: { total, ...coin }
@@ -36,10 +37,11 @@ export function sellCoin({ id, name, symbol, rank, price_usd, total }: ICoin) {
 		}
 	};
 }
-export function getTotal(state) {
+export function getTotal(state: ICoin[]): IAccumulatedCoin {
 	return state.reduce(getTotalCallback, {});
 }
-export default function(state = [], action = ({} = { type: '' })) {
+
+export default function(state = [], action: IRootAction): ICoin[] {
 	switch (action.type) {
 		case ADD_COIN: {
 			return concat(state, [action.payload]);
@@ -52,3 +54,5 @@ export default function(state = [], action = ({} = { type: '' })) {
 		}
 	}
 }
+
+export type PORTFOLIO_TYPES = ADD_COIN | SELL_COIN;

@@ -1,17 +1,19 @@
 import { prop, not } from 'sanctuary';
+import { IRootAction } from '../../store/root-action';
+import { ICoin } from '../portfolio/portfolio.reducer';
 
-type IS_SEARCHING = 'IS_SEARCHING';
-type SEARCH = 'SEARCH';
-type ERROR = 'ERROR';
-type ADD_COINS = 'ADD_COINS';
-type RETRIEVE_COINS = 'RETRIEVE_COINS';
+export type IS_SEARCHING = 'IS_SEARCHING';
+export type SEARCH = 'SEARCH';
+export type ERROR = 'ERROR';
+export type ADD_COINS = 'ADD_COINS';
+export type RETRIEVE_COINS = 'RETRIEVE_COINS';
 
 export type HOME_TYPES = IS_SEARCHING | SEARCH | ERROR | ADD_COINS | RETRIEVE_COINS;
 
 export interface IIsSearching {
 	type: IS_SEARCHING;
 }
-export const IS_SEARCHING = 'IS_SEARCHING';
+export const IS_SEARCHING: IS_SEARCHING = 'IS_SEARCHING';
 export function isSearching(): IIsSearching {
 	return {
 		type: IS_SEARCHING
@@ -77,24 +79,30 @@ export function initialState(): IInitialState {
 	};
 }
 
-function computeSearch(state, action) {
+function computeSearch(state: IInitialState, action: IRootAction): IHomeState {
 	return {
 		...state
 	};
 }
-function computeIsSearching(state, action) {
+function computeIsSearching(state: IInitialState, action: IRootAction): IHomeState {
 	return {
 		...state,
 		isSearching: not(state.isSearching)
 	};
 }
-function computeAddCoins(state, action) {
+
+function computeAddCoins(state: IInitialState, action: IRootAction): IHomeState {
 	return {
 		...state,
 		coins: action.payload
 	};
 }
-export default function(state: IInitialState = initialState(), action: HOME_TYPES) {
+
+interface IHomeState {
+	isSearching: boolean;
+	coins: ICoin[];
+}
+export default function(state: IInitialState = initialState(), action: IRootAction) {
 	switch (action.type) {
 		case ADD_COINS: {
 			return computeAddCoins(state, action);

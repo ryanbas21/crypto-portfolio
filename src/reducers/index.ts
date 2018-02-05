@@ -13,7 +13,7 @@ export interface RootState extends StoreEnhancerState {
 	portfolio: PortfolioState;
 }
 const rootReducer = combineReducers<RootState, IRootAction>({
-	Home: HomeReducer,
+	home: HomeReducer,
 	router: routerReducer,
 	navbar: NavbarReducer,
 	portfolio: PortfolioReducer

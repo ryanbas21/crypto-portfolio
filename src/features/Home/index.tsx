@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Jumbotron } from 'react-bootstrap';
-import { getCoins, retrieveCoins, searchCoins, isSearching, searching } from './home.reducer';
+import { getCoins, retrieveCoins, searchCoins, 
+	isSearching, searching, IS_SEARCHING, RETRIEVE_COINS } from './home.reducer';
 import CoinChart from './table/CoinChart';
+import { RootState } from '../../reducers/';
+import { ICoin } from '../portfolio/portfolio.reducer';
 
-class Home extends Component {
+interface IHomeState {}
+class Home extends Component<IHomeProps, IHomeState> {
 	componentDidMount() {
 		this.props.retrieveCoins();
 	}
@@ -24,10 +27,10 @@ class Home extends Component {
 	}
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: RootState) {
 	return {
-		isSearching: searching(state.Home),
-		coins: getCoins(state.Home) || {}
+		isSearching: searching(state.home),
+		coins: getCoins(state.home) || {}
 	};
 }
 const mapDispatchToProps = {
@@ -36,10 +39,10 @@ const mapDispatchToProps = {
 	isSearching
 };
 
-Home.propTypes = {
-	retrieveCoins: PropTypes.func.isRequired,
+interface IHomeProps {
+	retrieveCoins: () => RETRIEVE_COINS; 
 	// searchCoins: PropTypes.func.isRequired,
-	isSearching: PropTypes.func.isRequired,
-	coins: PropTypes.array.isRequired
+	isSearching: () => IS_SEARCHING; 
+	coins: ICoin[]; 
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

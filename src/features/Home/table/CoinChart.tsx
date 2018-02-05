@@ -1,11 +1,14 @@
 import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
 import {map} from 'sanctuary';
 import {Table} from 'react-bootstrap';
 import Head from './head';
 import Body from './body';
+import { ICoin } from '../../portfolio/portfolio.reducer';
 
-const CoinChart = props => (
+interface CoinChartProps {
+	coins: ICoin[];
+}
+const CoinChart: React.SFC<CoinChartProps> = (props) => (
 	<Fragment>
 		<Table hover responsive striped>
 			<Head />
@@ -15,7 +18,3 @@ const CoinChart = props => (
 );
 
 export default CoinChart;
-
-CoinChart.propTypes = {
-	coins: PropTypes.array.isRequired
-};

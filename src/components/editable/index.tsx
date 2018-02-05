@@ -2,21 +2,26 @@ import * as React from 'react';
 import {FormGroup, FormControl} from 'react-bootstrap';
 
 const noop = () => {};
+interface Children {
+  readonly value: string,
+  readonly onClick: (n?: string) => JSX.Element | void; 
+}
 interface IEditableProps  {
-	value: string,
-	onSave: (n: string) => any;
-	children: () => any;
+	readonly value: string,
+	readonly onSave: (n?: string) => any;
+	readonly children: (n: Children) => JSX.Element | void; 
 };
 
 interface IEditableState {
-	editValue: boolean;
-	valueChanged: boolean;
-	value: string;
+	readonly editValue: boolean;
+	readonly valueChanged: boolean;
+	readonly value: string;
 }
-class Editable extends React.Component<any, IEditableState> {
-	constructor({onSave = noop}) {
-		super();
-		this.onSave = onSave;
+class Editable extends React.Component<IEditableProps, IEditableState> {
+	onSave: (n: string) => void | string;
+	constructor(props: IEditableProps) {
+		super(props);
+		this.onSave = props.onSave || noop;
 		this.state = {
 			editValue: false,
 			valueChanged: false,
@@ -29,25 +34,25 @@ class Editable extends React.Component<any, IEditableState> {
 		this.setValue = this.setValue.bind(this);
 	}
 
-	editValue() {
+	editValue(): void {
 		this.setState(state => ({
 			editValue: true
 		}));
 	}
 
-	handleFocus(e) {
-		e.target.select();
+	handleFocus(e: React.MouseEventHandler<void>): void {
+		e.currentTarget.select();
 	}
 
-	setValue(e) {
-		const value = e.target.value;
+	setValue(e: React.MouseEventHandler<string>): void {
+		const value = e.currentTarget.value;
 		this.setState(state => ({valueChanged: true, value}));
 	}
-	saveValue() {
+	saveValue(): void {
 		this.setState(state => ({...state, editValue: false}), () => this.onSave(this.state.value));
 	}
 
-	handleKeyUp(e) {
+	handleKeyUp(e: React.KeyboardEvent<string>): void {
 		if (e.key === 'Enter') {
 			e.preventDefault();
 			this.saveValue();

@@ -1,9 +1,12 @@
 import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
 import {map} from 'sanctuary';
 import Row from './row';
+import { ICoin } from '../../portfolio/portfolio.reducer';
 
-function Body(props) {
+interface IBodyProps {
+	coins: ICoin[];
+}
+let Body: React.SFC<IBodyProps> = function (props) {
 	return (
 		<Fragment>
 			<tbody>{map(value => <Row value={value} />, props.coins)}</tbody>
@@ -12,7 +15,3 @@ function Body(props) {
 }
 
 export default Body;
-
-Body.propTypes = {
-	coins: PropTypes.array.isRequired
-};

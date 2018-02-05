@@ -1,6 +1,13 @@
 import { grabTotal, grabValue, value, total } from './util.functions';
+import { ICoin } from '../portfolio.reducer';
 
-export const getTotalCallback = (acc, coin) => {
+export interface IAccumulatedCoin {
+	[key: string]: { 
+		value: number;
+		total: number;
+	}
+}
+export const getTotalCallback = (acc: IAccumulatedCoin , coin: ICoin): IAccumulatedCoin => {
 	if (!acc[coin.id]) {
 		return {
 			...acc,
@@ -11,7 +18,7 @@ export const getTotalCallback = (acc, coin) => {
 		};
 	}
 	const val = value(acc, coin),
-		tot = total(acc, coin);
+		  tot = total(acc, coin);
 	return {
 		...acc,
 		[coin.id]: {
