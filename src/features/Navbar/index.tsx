@@ -4,10 +4,21 @@ import {Navbar, Nav} from 'react-bootstrap';
 import {map} from 'sanctuary';
 import {Search} from '../../components';
 import NavbarItem from './navbaritem';
+import { RootState } from '../../reducers/index';
 
-class Navigation extends Component {
-	constructor() {
-		super();
+interface Route {
+	route: string;
+	name: string;
+	active: boolean;
+}
+interface NavigationState {
+	routes: Route[];
+}
+interface NavigationProps {
+}
+class Navigation extends Component<NavigationProps, NavigationState> {
+	constructor(props: NavigationProps) {
+		super(props);
 		this.isActive.bind(this);
 		this.state = {
 			routes: [
@@ -16,10 +27,10 @@ class Navigation extends Component {
 			]
 		};
 	}
-	isActive(route) {
+	isActive(route: string ) {
 		this.setState(state => ({
-			routes: routes.map(
-				r => (r.name === route ? {...r, active: true} : {...r, active: false})
+			routes: this.state.routes.map(
+				(r: Route) => (r.name === route ? {...r, active: true} : {...r, active: false})
 			)
 		}));
 	}
@@ -43,7 +54,7 @@ class Navigation extends Component {
 	}
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: RootState) {
 	return {};
 }
 const mapDispatchToProps = {};

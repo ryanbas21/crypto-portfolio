@@ -1,9 +1,9 @@
 import React from 'react';
 import {Editable} from '../../components';
 
-export default props => (
+export default (props: {}) => (
 	<div>
 		Portfolio
-		<Editable onSave={() => console.log('saving')} />
+		<Editable onSave={() => { console.log('saving') }} />
 	</div>
 );

@@ -1,29 +1,38 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {FormControl, FormGroup, Button} from 'react-bootstrap';
 import {getCoins} from '../../features/Home/home.reducer';
 import {filter, toUpper} from 'sanctuary';
+import { ICoin } from '../portfolio/portfolio.reducer';
+import { RootState } from '../../reducers/';
 
-class SearchBar extends React.Component {
-	constructor(props) {
+interface ISearchbarProps extends MappedProps {
+	onEnter: () => void;
+	getCoins: () => void;
+	onSubmit: () =>  void;
+}
+interface ISearchbarState {
+	coins: ICoin[];
+}
+class SearchBar extends React.Component<ISearchbarProps, ISearchbarState> {
+	constructor(props: ISearchbarProps) {
 		super(props);
 		this.onChange = this.onChange.bind(this);
 		this.state = {
-			coins: this.props.coins || {}
+			coins: this.props.coins || []
 		};
 	}
-	onChange(e) {
+	onChange(e: React.KeyboardEvent<string>): void {
 		e.preventDefault();
-		const value = toUpper(e.target.value);
+		const value = toUpper((e.target as HTMLInputElement).value);
 		this.setState(() => ({
 			coins: filter(
-				val => val.name.includes(value),
+				(val) => val.name.includes(value),
 				this.state.coins.length ? this.state.coins : this.props.coins
 			)
 		}));
 	}
-	render() {
+	render(): JSX.Element {
 		return (
 			<FormGroup>
 				<FormControl
@@ -41,15 +50,14 @@ class SearchBar extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+interface MappedProps {
+	coins: string[]
+}
+function mapStateToProps(state: RootState): MappedProps {
 	return {
-		coins: getCoins(state.Home) || {}
+		coins: getCoins(state.home)
 	};
 }
 export default connect(mapStateToProps)(SearchBar);
 
-SearchBar.propTypes = {
-	onEnter: PropTypes.func.isRequired,
-	coins: PropTypes.array.isRequired,
-	onSubmit: PropTypes.func.isRequired
-};
+
