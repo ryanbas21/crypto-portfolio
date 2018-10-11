@@ -11,11 +11,12 @@ export interface INavbar {
 	isActive: (a: string) => boolean;
 	route: IRoute;
 }
-const NavbarItem = props => (
+const NavbarItem: React.SFC<INavbar> = props => (
 	<LinkContainer to={props.route.route}>
 		<NavItem
 			isActive={props.route.active ? true : false}
-			onClick={() => props.isActive(props.route.name)}>
+			onClick={() => props.isActive(props.route.name)}
+		>
 			{props.route.name}
 		</NavItem>
 	</LinkContainer>
